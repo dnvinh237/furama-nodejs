@@ -38,11 +38,11 @@ const contractSchema: Record<string, ParamSchema> = {
                     if (isNaN(parseInt(value))) {
                         return Promise.reject('id must be number')
                     }
-                    const existedEmployee = await contractService.findByIdContract(
+                    const existedContract = await contractService.findByIdContract(
                         parseInt(value)
                     )
-                    if (existedEmployee == null)
-                        return Promise.reject('employee bank card does not exist')
+                    if (existedContract == null)
+                        return Promise.reject('Contract does not exist')
                 }
                 return true
             }

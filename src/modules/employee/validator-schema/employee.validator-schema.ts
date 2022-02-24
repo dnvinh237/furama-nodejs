@@ -22,7 +22,7 @@ const employeeSchema: Record<string, ParamSchema> = {
                         parseInt(value)
                     )
                     if (existedEmployee == null)
-                        return Promise.reject('employee bank card does not exist')
+                        return Promise.reject('Employee does not exist')
                 }
                 return true
             }
