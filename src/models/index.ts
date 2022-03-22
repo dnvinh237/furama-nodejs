@@ -9,6 +9,7 @@ import DivisionModel from './division.model'
 import EducationDegreeModel from './educationDegree.model'
 import RentTypeModel from './rentType.model'
 import ServiceModel from './service.model'
+import UserModel from './user.model'
 
 export {
     AccompaniedServiceModel,
@@ -21,5 +22,6 @@ export {
     DivisionModel,
     EducationDegreeModel,
     RentTypeModel,
-    ServiceModel
+    ServiceModel,
+    UserModel
 }

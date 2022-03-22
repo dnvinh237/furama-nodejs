@@ -106,7 +106,7 @@ module.exports = {
       },
       name: { type: Sequelize.STRING },
       position_id: { type: Sequelize.INTEGER, allowNull: true },
-      divistion_id: { type: Sequelize.INTEGER, allowNull: true },
+      division_id: { type: Sequelize.INTEGER, allowNull: true },
       education_degree_id: { type: Sequelize.INTEGER, allowNull: true },
       created_at: { type: Sequelize.DATE, allowNull: false },
       updated_at: { type: Sequelize.DATE, allowNull: false },
@@ -149,6 +149,19 @@ module.exports = {
       max_people: { type: Sequelize.INTEGER },
       status: { type: Sequelize.INTEGER },
       position_id: { type: Sequelize.INTEGER, allowNull: true },
+      created_at: { type: Sequelize.DATE, allowNull: false },
+      updated_at: { type: Sequelize.DATE, allowNull: false },
+    });
+    await queryInterface.createTable("User", {
+      id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      username: { type: Sequelize.STRING },
+      password: { type: Sequelize.STRING },
+      refesh_token: { type: Sequelize.STRING },
       created_at: { type: Sequelize.DATE, allowNull: false },
       updated_at: { type: Sequelize.DATE, allowNull: false },
     });
@@ -212,9 +225,9 @@ module.exports = {
       references: { table: "division", field: "id" },
       onDelete: "CASCADE",
       onUpdate: "CASCADE",
-      fields: ["divistion_id"],
+      fields: ["division_id"],
       type: "foreign key",
-      name: "fk_employee_divistion_id_division",
+      name: "fk_employee_division_id_division",
     });
     await queryInterface.addConstraint("employee", {
       references: { table: "educationDegree", field: "id" },
@@ -264,7 +277,7 @@ module.exports = {
     );
     await queryInterface.removeConstraint(
       "employee",
-      "fk_employee_divistion_id_division"
+      "fk_employee_division_id_division"
     );
     await queryInterface.removeConstraint(
       "employee",
@@ -285,5 +298,6 @@ module.exports = {
     await queryInterface.dropTable("position");
     await queryInterface.dropTable("rentType");
     await queryInterface.dropTable("Service");
+    await queryInterface.dropTable("User");
   },
 };

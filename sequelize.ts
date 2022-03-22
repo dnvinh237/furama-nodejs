@@ -7,11 +7,13 @@ const env = process.env.NODE_ENV || 'development'
 const config = require('./config/config.json')[env]
 
 const sequelize = new Sequelize(config.database, config.username, config.password, {
-  ...config,
+  ...config,logging: false,
   models: [__dirname + '/src/models/*.model.ts'],
   modelMatch: (filename, member) =>
     filename.substring(0, filename.indexOf('.model')).replace('-', '') === member.toLowerCase()
 })
+
+
 // generateMigration(sequelize, {
 //   migrationName: "my-migration",
 //   outDir: path.join(__dirname, "./migrations"),
